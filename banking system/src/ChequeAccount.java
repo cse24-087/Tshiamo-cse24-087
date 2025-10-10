@@ -1,14 +1,9 @@
 package src;
 
 public class ChequeAccount extends Account {
-    private String employerName;
-    private String employerAddress;
-
     public ChequeAccount(String accountNumber, double balance, String branch,
                          Customer customer, String employerName, String employerAddress) {
         super(accountNumber, balance, branch, customer);
-        this.employerName = employerName;
-        this.employerAddress = employerAddress;
     }
 
     @Override
