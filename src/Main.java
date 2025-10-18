@@ -1,4 +1,10 @@
-package src;
+import model.Account;
+import model.SavingsAccount;
+import model.InvestmentAccount;
+import model.ChequeAccount;
+import model.Customer;
+import model.IndividualCustomer;
+import model.InterestBearing;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,5 +1,5 @@
 
-package src;
+package model;
 
 public class IndividualCustomer extends Customer {
     public IndividualCustomer(String name, String address) {

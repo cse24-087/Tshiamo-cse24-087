@@ -1,4 +1,4 @@
-package src;
+package model;
 
 public class CorporateCustomer extends Customer {
     private String companyRegistrationNumber;
@@ -8,7 +8,7 @@ public class CorporateCustomer extends Customer {
         this.companyRegistrationNumber = registrationNumber;
     }
 
-    @Override
+    
     public String getCustomerType() {
         return "Corporate";
     }

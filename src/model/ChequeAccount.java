@@ -1,4 +1,4 @@
-package src;
+package model;
 
 public class ChequeAccount extends Account {
     public ChequeAccount(String accountNumber, double balance, String branch,
