@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="banking.controller.LoginController" stylesheets="@styles.css" styleClass="app-background">
+   <children>
+      <VBox alignment="CENTER" spacing="18.0" StackPane.alignment="CENTER" maxWidth="420.0" styleClass="card login-card">
+         <children>
+            <VBox spacing="6.0" alignment="CENTER">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Banking System" styleClass="title-text">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please sign in to continue" wrappingWidth="320.0" styleClass="subtitle-text">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox spacing="16.0" prefWidth="360.0">
+               <children>
+                  <GridPane hgap="12.0" vgap="12.0" styleClass="form-grid">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" minWidth="80.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                     </columnConstraints>
+                     <children>
+                        <Label text="Username" />
+                        <TextField fx:id="usernameField" promptText="Enter username" GridPane.columnIndex="1" />
+                        <Label text="Password" GridPane.rowIndex="1" />
+                        <PasswordField fx:id="passwordField" promptText="Enter password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <HBox spacing="16.0" alignment="CENTER">
+                     <children>
+                        <RadioButton fx:id="customerRadio" selected="true" text="Customer" />
+                        <RadioButton fx:id="employeeRadio" text="Employee" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefWidth="Infinity" text="Login" styleClass="accent-button" />
+                  <Label fx:id="errorLabel" alignment="CENTER" styleClass="error-label" visible="false" />
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="32.0" left="36.0" right="36.0" top="36.0" />
+         </padding>
+      </VBox>
+   </children>
+</StackPane>
+
+

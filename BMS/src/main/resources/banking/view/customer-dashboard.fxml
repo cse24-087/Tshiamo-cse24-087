@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="banking.controller.CustomerDashboardController" stylesheets="@styles.css" prefWidth="1100.0" prefHeight="700.0" styleClass="base-layout">
+   <top>
+      <VBox spacing="8.0" styleClass="header-bar" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="16.0" left="24.0" right="24.0" top="24.0" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="18.0">
+               <children>
+                  <VBox spacing="2.0">
+                     <children>
+                        <Text fx:id="welcomeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome, Customer" styleClass="title-text" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Monitor balances and open new accounts" styleClass="subtitle-text" />
+                     </children>
+                  </VBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" text="Logout" styleClass="accent-button" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <VBox spacing="14.0" prefWidth="260.0" BorderPane.alignment="CENTER" styleClass="side-panel card">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <Label text="Your Accounts" styleClass="section-title" />
+            <ListView fx:id="accountListView" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="modern-tabs" BorderPane.alignment="CENTER">
+         <tabs>
+            <Tab text="Account Operations">
+               <content>
+                  <VBox spacing="24.0" alignment="CENTER" styleClass="content-card">
+                     <padding>
+                        <Insets bottom="28.0" left="32.0" right="32.0" top="32.0" />
+                     </padding>
+                     <children>
+                        <Text fx:id="balanceText" strokeType="OUTSIDE" strokeWidth="0.0" text="Select an account to view balance" styleClass="balance-text" textAlignment="CENTER" wrappingWidth="420.0" />
+                        <HBox spacing="16.0">
+                           <children>
+                              <Button fx:id="depositButton" mnemonicParsing="false" onAction="#handleDeposit" prefWidth="200.0" text="Deposit" styleClass="primary-button" />
+                              <Button fx:id="withdrawButton" mnemonicParsing="false" onAction="#handleWithdraw" prefWidth="200.0" text="Withdraw" styleClass="ghost-button" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="Open New Account">
+               <content>
+                  <VBox spacing="20.0" styleClass="content-card">
+                     <padding>
+                        <Insets bottom="28.0" left="32.0" right="32.0" top="32.0" />
+                     </padding>
+                     <children>
+                        <VBox spacing="6.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Open New Account" styleClass="section-title" />
+                              <Label text="Complete the form to add another account" styleClass="subtitle-text" />
+                           </children>
+                        </VBox>
+                        <GridPane hgap="18.0" vgap="14.0" styleClass="form-grid">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="RIGHT" minWidth="140.0" prefWidth="180.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="260.0" />
+                           </columnConstraints>
+                           <children>
+                              <Label text="Account Number" />
+                              <TextField fx:id="newAccountNumber" promptText="Enter account number" GridPane.columnIndex="1" />
+
+                              <Label text="Account Type" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="newAccountType" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                              <Label text="Initial Deposit" GridPane.rowIndex="2" />
+                              <TextField fx:id="newAccountDeposit" promptText="Enter amount" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                              <Label text="Branch" GridPane.rowIndex="3" />
+                              <TextField fx:id="newAccountBranch" promptText="Enter branch name" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <VBox fx:id="employmentInfoBox" spacing="14.0" visible="false">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Employment Information (Required for Cheque Account)" styleClass="helper-text" wrappingWidth="420.0" />
+                              <GridPane hgap="18.0" vgap="14.0" styleClass="form-grid">
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="RIGHT" minWidth="140.0" prefWidth="180.0" />
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="260.0" />
+                                 </columnConstraints>
+                                 <children>
+                                    <Label text="Employer Name" />
+                                    <TextField fx:id="newAccountEmployerName" promptText="Enter employer name" GridPane.columnIndex="1" />
+
+                                    <Label text="Employer Address" GridPane.rowIndex="1" />
+                                    <TextField fx:id="newAccountEmployerAddress" promptText="Enter employer address" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Button fx:id="openAccountButton" mnemonicParsing="false" onAction="#handleOpenAccount" text="Open Account" styleClass="primary-button" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
+
+

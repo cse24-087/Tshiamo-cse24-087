@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="banking.controller.EmployeeDashboardController" stylesheets="@styles.css" prefWidth="1100.0" prefHeight="700.0" styleClass="base-layout">
+   <top>
+      <VBox spacing="8.0" styleClass="header-bar" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="16.0" left="24.0" right="24.0" top="24.0" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="18.0">
+               <children>
+                  <VBox spacing="2.0">
+                     <children>
+                        <Text fx:id="welcomeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome, Employee" styleClass="title-text" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage customers and accounts seamlessly" styleClass="subtitle-text" />
+                     </children>
+                  </VBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefresh" text="Refresh" styleClass="ghost-button" />
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" text="Logout" styleClass="accent-button" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <VBox spacing="18.0" prefWidth="280.0" BorderPane.alignment="CENTER" styleClass="side-panel card">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Customers" styleClass="section-title" />
+                  <ListView fx:id="customerListView" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Accounts" styleClass="section-title" />
+                  <ListView fx:id="accountListView" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <Button fx:id="applyInterestButton" mnemonicParsing="false" onAction="#handleApplyInterest" text="Apply Interest" styleClass="primary-button" prefWidth="Infinity" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="modern-tabs" BorderPane.alignment="CENTER">
+         <tabs>
+            <Tab text="Register Customer">
+               <content>
+                  <VBox spacing="20.0" styleClass="content-card">
+                     <padding>
+                        <Insets bottom="24.0" left="28.0" right="28.0" top="28.0" />
+                     </padding>
+                     <children>
+                        <VBox spacing="6.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Register New Customer" styleClass="section-title" />
+                              <Label text="Capture customer profile and credentials" styleClass="subtitle-text" />
+                           </children>
+                        </VBox>
+                        <GridPane hgap="18.0" vgap="14.0" styleClass="form-grid">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="RIGHT" minWidth="140.0" prefWidth="180.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="260.0" />
+                           </columnConstraints>
+                           <children>
+                              <Label text="First Name" />
+                              <TextField fx:id="newCustomerFirstName" promptText="Enter first name" GridPane.columnIndex="1" />
+
+                              <Label text="Last Name" GridPane.rowIndex="1" />
+                              <TextField fx:id="newCustomerLastName" promptText="Enter last name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                              <Label text="Address" GridPane.rowIndex="2" />
+                              <TextField fx:id="newCustomerAddress" promptText="Enter address" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                              <Label text="Employer Name" GridPane.rowIndex="3" />
+                              <TextField fx:id="newCustomerEmployerName" promptText="Optional" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                              <Label text="Employer Address" GridPane.rowIndex="4" />
+                              <TextField fx:id="newCustomerEmployerAddress" promptText="Optional" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                              <Label text="Username" GridPane.rowIndex="5" />
+                              <TextField fx:id="newCustomerUsername" promptText="Enter username" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                              <Label text="Password" GridPane.rowIndex="6" />
+                              <PasswordField fx:id="newCustomerPassword" promptText="Enter password" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                           </children>
+                        </GridPane>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Button fx:id="registerCustomerButton" mnemonicParsing="false" onAction="#handleRegisterCustomer" text="Register Customer" styleClass="primary-button" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab text="Create Account">
+               <content>
+                  <VBox spacing="20.0" styleClass="content-card">
+                     <padding>
+                        <Insets bottom="24.0" left="28.0" right="28.0" top="28.0" />
+                     </padding>
+                     <children>
+                        <VBox spacing="6.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create New Account" styleClass="section-title" />
+                              <Label text="Link the selected customer to a new account" styleClass="subtitle-text" />
+                           </children>
+                        </VBox>
+                        <GridPane hgap="18.0" vgap="14.0" styleClass="form-grid">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="RIGHT" minWidth="140.0" prefWidth="180.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="260.0" />
+                           </columnConstraints>
+                           <children>
+                              <Label text="Customer ID" />
+                              <TextField fx:id="customerIdField" promptText="Select customer from list" GridPane.columnIndex="1" />
+
+                              <Label text="Account Number" GridPane.rowIndex="1" />
+                              <TextField fx:id="accountNumberField" promptText="Enter account number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                              <Label text="Account Type" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="accountTypeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                              <Label text="Initial Deposit" GridPane.rowIndex="3" />
+                              <TextField fx:id="initialDepositField" promptText="Enter amount" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                              <Label text="Branch" GridPane.rowIndex="4" />
+                              <TextField fx:id="branchField" promptText="Enter branch name" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           </children>
+                        </GridPane>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#handleCreateAccount" text="Create Account" styleClass="primary-button" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
+
+
